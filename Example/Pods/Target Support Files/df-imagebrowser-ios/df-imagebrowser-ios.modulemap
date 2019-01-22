@@ -1,0 +1,6 @@
+framework module df_imagebrowser_ios {
+  umbrella header "df-imagebrowser-ios-umbrella.h"
+
+  export *
+  module * { export * }
+}

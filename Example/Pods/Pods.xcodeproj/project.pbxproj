@@ -1,0 +1,783 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		00010F96054AB456A92DF053FAE6C4AB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		0078A74BE64A45D0CA184BAAA2474098 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		1838141C21F6BF8D00723B67 /* ImageBrowserAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838141421F6BF8B00723B67 /* ImageBrowserAsset.swift */; };
+		1838141D21F6BF8D00723B67 /* ImageBrowserZoomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838141521F6BF8B00723B67 /* ImageBrowserZoomCell.swift */; };
+		1838141E21F6BF8D00723B67 /* ImageBrowserBottomArrowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838141621F6BF8B00723B67 /* ImageBrowserBottomArrowView.swift */; };
+		1838141F21F6BF8D00723B67 /* ImageBrowserSquareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838141721F6BF8B00723B67 /* ImageBrowserSquareView.swift */; };
+		1838142021F6BF8D00723B67 /* ImageBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838141821F6BF8B00723B67 /* ImageBrowserViewController.swift */; };
+		1838142121F6BF8D00723B67 /* ImageBrowserDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838141921F6BF8C00723B67 /* ImageBrowserDownload.swift */; };
+		1838142221F6BF8D00723B67 /* ImageBrowserProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838141A21F6BF8C00723B67 /* ImageBrowserProgressView.swift */; };
+		1838142321F6BF8D00723B67 /* ImageBrowserCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838141B21F6BF8D00723B67 /* ImageBrowserCollectionView.swift */; };
+		1838142921F6D91000723B67 /* Extension+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1838142821F6D91000723B67 /* Extension+.swift */; };
+		1D26A4895A7411CE9D0DC14D53E5B7EB /* df-imagebrowser-ios-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = FB8161598F0CE7A64A2D6E5BC9A6AB3A /* df-imagebrowser-ios-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		268508E1871D574F3F7DBF45CB514CE7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */; };
+		3998736F6CCD4714A76FDFF93F360EB2 /* Pods-df-imagebrowser-ios_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = E74229A6974082A6B53475D10C371971 /* Pods-df-imagebrowser-ios_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B675EDB20DAD583341058CF30BE448AA /* df-imagebrowser-ios-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = B0703757DEC00C766350CAB9B8AE3732 /* df-imagebrowser-ios-dummy.m */; };
+		CC5B5D645350706501AC3C614BBFE08A /* Pods-df-imagebrowser-ios_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = F5E12C3EB78FB066E6C39703FCCDCAE5 /* Pods-df-imagebrowser-ios_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D42044E9062CA8E1726576C8300479F1 /* Pods-df-imagebrowser-ios_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A293F705F3D927FFE4C5F37C8CE58948 /* Pods-df-imagebrowser-ios_Example-dummy.m */; };
+		E4AE35819D6B95E90B7F0E5CFCFDDFF9 /* Pods-df-imagebrowser-ios_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 461CCAB8B0298C6EB0B70BE2B3FE3C83 /* Pods-df-imagebrowser-ios_Tests-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5811F1D1B2C9011FF910425F3A652A26 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 079EE94DDBE4E86051B1494DBCD34060;
+			remoteInfo = "df-imagebrowser-ios";
+		};
+		ABE4B22B91B56DE5D13A76158D05300D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2911E3BEBEB4FA6227B9C6A36630C5A4;
+			remoteInfo = "Pods-df-imagebrowser-ios_Example";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		08CC1039A59B7CB22DC9807C51E6C508 /* Pods-df-imagebrowser-ios_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-df-imagebrowser-ios_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		160F546213236A993BDECCA7598817E2 /* Pods-df-imagebrowser-ios_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-df-imagebrowser-ios_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		1838141421F6BF8B00723B67 /* ImageBrowserAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBrowserAsset.swift; path = "df-imagebrowser-ios/Classes/ImageBrowserAsset.swift"; sourceTree = "<group>"; };
+		1838141521F6BF8B00723B67 /* ImageBrowserZoomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBrowserZoomCell.swift; path = "df-imagebrowser-ios/Classes/ImageBrowserZoomCell.swift"; sourceTree = "<group>"; };
+		1838141621F6BF8B00723B67 /* ImageBrowserBottomArrowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBrowserBottomArrowView.swift; path = "df-imagebrowser-ios/Classes/ImageBrowserBottomArrowView.swift"; sourceTree = "<group>"; };
+		1838141721F6BF8B00723B67 /* ImageBrowserSquareView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBrowserSquareView.swift; path = "df-imagebrowser-ios/Classes/ImageBrowserSquareView.swift"; sourceTree = "<group>"; };
+		1838141821F6BF8B00723B67 /* ImageBrowserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBrowserViewController.swift; path = "df-imagebrowser-ios/Classes/ImageBrowserViewController.swift"; sourceTree = "<group>"; };
+		1838141921F6BF8C00723B67 /* ImageBrowserDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBrowserDownload.swift; path = "df-imagebrowser-ios/Classes/ImageBrowserDownload.swift"; sourceTree = "<group>"; };
+		1838141A21F6BF8C00723B67 /* ImageBrowserProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBrowserProgressView.swift; path = "df-imagebrowser-ios/Classes/ImageBrowserProgressView.swift"; sourceTree = "<group>"; };
+		1838141B21F6BF8D00723B67 /* ImageBrowserCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageBrowserCollectionView.swift; path = "df-imagebrowser-ios/Classes/ImageBrowserCollectionView.swift"; sourceTree = "<group>"; };
+		1838142821F6D91000723B67 /* Extension+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Extension+.swift"; path = "df-imagebrowser-ios/Classes/Extension+.swift"; sourceTree = "<group>"; };
+		1C7CEAA8D360DFE00D444D85F70F4A2D /* Pods-df-imagebrowser-ios_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-df-imagebrowser-ios_Tests-frameworks.sh"; sourceTree = "<group>"; };
+		21E26F30A70A51252AB1948337A17C3D /* df_imagebrowser_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = df_imagebrowser_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		37F3FF4B190021B7D33A9128FBD6D64D /* df-imagebrowser-ios.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "df-imagebrowser-ios.xcconfig"; sourceTree = "<group>"; };
+		44233545FEF183E69FFB6036213D344F /* Pods-df-imagebrowser-ios_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-df-imagebrowser-ios_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		4435710B9A3AA27E1370EF540DAF4C47 /* Pods_df_imagebrowser_ios_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_df_imagebrowser_ios_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		453E264FC4FF7D7E355F60C1983C751A /* Pods-df-imagebrowser-ios_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-df-imagebrowser-ios_Example-acknowledgements.plist"; sourceTree = "<group>"; };
+		461CCAB8B0298C6EB0B70BE2B3FE3C83 /* Pods-df-imagebrowser-ios_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-df-imagebrowser-ios_Tests-dummy.m"; sourceTree = "<group>"; };
+		4CFFEF13E96A10C28D334AD46ACCB9FF /* Pods-df-imagebrowser-ios_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-df-imagebrowser-ios_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		6067C970077EF38EE7FD441C95A171E4 /* Pods-df-imagebrowser-ios_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-df-imagebrowser-ios_Example-frameworks.sh"; sourceTree = "<group>"; };
+		7BE7C9D09E21F158E91D144092A62092 /* Pods-df-imagebrowser-ios_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-df-imagebrowser-ios_Example-resources.sh"; sourceTree = "<group>"; };
+		8506BFE4B2DDACEDA0F9CD5AA498756E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9074B464C5DCDAAEA9A44CAF62C5D4A2 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		91C1B62B6993DEFE5905E2B8BD7A0921 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9DE4B76CACB14FD3F98FE1A9FAB237EE /* Pods-df-imagebrowser-ios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-df-imagebrowser-ios_Example.release.xcconfig"; sourceTree = "<group>"; };
+		A293F705F3D927FFE4C5F37C8CE58948 /* Pods-df-imagebrowser-ios_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-df-imagebrowser-ios_Example-dummy.m"; sourceTree = "<group>"; };
+		A554CEB946DDD40189832CA95378A92E /* Pods-df-imagebrowser-ios_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-df-imagebrowser-ios_Tests.modulemap"; sourceTree = "<group>"; };
+		B0703757DEC00C766350CAB9B8AE3732 /* df-imagebrowser-ios-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "df-imagebrowser-ios-dummy.m"; sourceTree = "<group>"; };
+		C093DC6E180C3132FECB92EA01F1EC63 /* df-imagebrowser-ios-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "df-imagebrowser-ios-prefix.pch"; sourceTree = "<group>"; };
+		C4EDB31FB66C747D458E4D2A68293F17 /* Pods-df-imagebrowser-ios_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-df-imagebrowser-ios_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		C7D6278F0B42A92D90C881EDB604A6CC /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C883B0C2D883BE74A862C98F27DD3C9C /* Pods-df-imagebrowser-ios_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-df-imagebrowser-ios_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
+		CB8061EE677864B046C1C2D0E926F6BC /* df-imagebrowser-ios.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "df-imagebrowser-ios.modulemap"; sourceTree = "<group>"; };
+		CDB6503332FBEDF4D3AB45C5C878918A /* Pods-df-imagebrowser-ios_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-df-imagebrowser-ios_Example.modulemap"; sourceTree = "<group>"; };
+		DCD1B8C0F88081910333DB3D114627AE /* Pods_df_imagebrowser_ios_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_df_imagebrowser_ios_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E74229A6974082A6B53475D10C371971 /* Pods-df-imagebrowser-ios_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-df-imagebrowser-ios_Tests-umbrella.h"; sourceTree = "<group>"; };
+		EC54FE9E17DB865D61DB8A5365D90632 /* Pods-df-imagebrowser-ios_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-df-imagebrowser-ios_Tests-resources.sh"; sourceTree = "<group>"; };
+		F09E6C8B13CC751348D3E3460554CF3D /* df-imagebrowser-ios.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; path = "df-imagebrowser-ios.podspec"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		F27BAA2BC65F26032CD8BE9B1A067BD7 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5E12C3EB78FB066E6C39703FCCDCAE5 /* Pods-df-imagebrowser-ios_Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-df-imagebrowser-ios_Example-umbrella.h"; sourceTree = "<group>"; };
+		FB8161598F0CE7A64A2D6E5BC9A6AB3A /* df-imagebrowser-ios-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "df-imagebrowser-ios-umbrella.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2B444E5DD3A3A3464A07C106DA0C603A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				00010F96054AB456A92DF053FAE6C4AB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		2ECDE83249B9C9633D01E0013263B7D8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				268508E1871D574F3F7DBF45CB514CE7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9D39BE109C7C93CFCC680531137527CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0078A74BE64A45D0CA184BAAA2474098 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E0D919E635D23B70123790B8308F8EF /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				5A16F4CFC63FAC439D7A04994F579A03 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		5F498C886E7784DD87EF3766DE7D4527 /* df-imagebrowser-ios */ = {
+			isa = PBXGroup;
+			children = (
+				1838141421F6BF8B00723B67 /* ImageBrowserAsset.swift */,
+				1838141621F6BF8B00723B67 /* ImageBrowserBottomArrowView.swift */,
+				1838141B21F6BF8D00723B67 /* ImageBrowserCollectionView.swift */,
+				1838141921F6BF8C00723B67 /* ImageBrowserDownload.swift */,
+				1838141A21F6BF8C00723B67 /* ImageBrowserProgressView.swift */,
+				1838141721F6BF8B00723B67 /* ImageBrowserSquareView.swift */,
+				1838141821F6BF8B00723B67 /* ImageBrowserViewController.swift */,
+				1838141521F6BF8B00723B67 /* ImageBrowserZoomCell.swift */,
+				1838142821F6D91000723B67 /* Extension+.swift */,
+				99895B42E06C33079F5F47BF86492A7F /* Pod */,
+				834310014D39CE698FB26C1AA3E3F32B /* Support Files */,
+			);
+			name = "df-imagebrowser-ios";
+			path = ../..;
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				B1FAC4FCFE9B3DECF2BA24711B2C72D4 /* Development Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				B5AE1C83A3B3A83D0615F802A41125E4 /* Products */,
+				CF1CFB4E495003355D6F2659F42BE5C2 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		834310014D39CE698FB26C1AA3E3F32B /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				CB8061EE677864B046C1C2D0E926F6BC /* df-imagebrowser-ios.modulemap */,
+				37F3FF4B190021B7D33A9128FBD6D64D /* df-imagebrowser-ios.xcconfig */,
+				B0703757DEC00C766350CAB9B8AE3732 /* df-imagebrowser-ios-dummy.m */,
+				C093DC6E180C3132FECB92EA01F1EC63 /* df-imagebrowser-ios-prefix.pch */,
+				FB8161598F0CE7A64A2D6E5BC9A6AB3A /* df-imagebrowser-ios-umbrella.h */,
+				8506BFE4B2DDACEDA0F9CD5AA498756E /* Info.plist */,
+			);
+			name = "Support Files";
+			path = "Example/Pods/Target Support Files/df-imagebrowser-ios";
+			sourceTree = "<group>";
+		};
+		99895B42E06C33079F5F47BF86492A7F /* Pod */ = {
+			isa = PBXGroup;
+			children = (
+				F09E6C8B13CC751348D3E3460554CF3D /* df-imagebrowser-ios.podspec */,
+				9074B464C5DCDAAEA9A44CAF62C5D4A2 /* LICENSE */,
+				C7D6278F0B42A92D90C881EDB604A6CC /* README.md */,
+			);
+			name = Pod;
+			sourceTree = "<group>";
+		};
+		AE32BEEB7897D2EFF00FB120F4445A27 /* Pods-df-imagebrowser-ios_Example */ = {
+			isa = PBXGroup;
+			children = (
+				F27BAA2BC65F26032CD8BE9B1A067BD7 /* Info.plist */,
+				CDB6503332FBEDF4D3AB45C5C878918A /* Pods-df-imagebrowser-ios_Example.modulemap */,
+				4CFFEF13E96A10C28D334AD46ACCB9FF /* Pods-df-imagebrowser-ios_Example-acknowledgements.markdown */,
+				453E264FC4FF7D7E355F60C1983C751A /* Pods-df-imagebrowser-ios_Example-acknowledgements.plist */,
+				A293F705F3D927FFE4C5F37C8CE58948 /* Pods-df-imagebrowser-ios_Example-dummy.m */,
+				6067C970077EF38EE7FD441C95A171E4 /* Pods-df-imagebrowser-ios_Example-frameworks.sh */,
+				7BE7C9D09E21F158E91D144092A62092 /* Pods-df-imagebrowser-ios_Example-resources.sh */,
+				F5E12C3EB78FB066E6C39703FCCDCAE5 /* Pods-df-imagebrowser-ios_Example-umbrella.h */,
+				160F546213236A993BDECCA7598817E2 /* Pods-df-imagebrowser-ios_Example.debug.xcconfig */,
+				9DE4B76CACB14FD3F98FE1A9FAB237EE /* Pods-df-imagebrowser-ios_Example.release.xcconfig */,
+			);
+			name = "Pods-df-imagebrowser-ios_Example";
+			path = "Target Support Files/Pods-df-imagebrowser-ios_Example";
+			sourceTree = "<group>";
+		};
+		B1FAC4FCFE9B3DECF2BA24711B2C72D4 /* Development Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5F498C886E7784DD87EF3766DE7D4527 /* df-imagebrowser-ios */,
+			);
+			name = "Development Pods";
+			sourceTree = "<group>";
+		};
+		B5AE1C83A3B3A83D0615F802A41125E4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				21E26F30A70A51252AB1948337A17C3D /* df_imagebrowser_ios.framework */,
+				DCD1B8C0F88081910333DB3D114627AE /* Pods_df_imagebrowser_ios_Example.framework */,
+				4435710B9A3AA27E1370EF540DAF4C47 /* Pods_df_imagebrowser_ios_Tests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E0D919E635D23B70123790B8308F8EF /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CF1CFB4E495003355D6F2659F42BE5C2 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AE32BEEB7897D2EFF00FB120F4445A27 /* Pods-df-imagebrowser-ios_Example */,
+				E22DF0C2D27498B07AC0134091356C72 /* Pods-df-imagebrowser-ios_Tests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		E22DF0C2D27498B07AC0134091356C72 /* Pods-df-imagebrowser-ios_Tests */ = {
+			isa = PBXGroup;
+			children = (
+				91C1B62B6993DEFE5905E2B8BD7A0921 /* Info.plist */,
+				A554CEB946DDD40189832CA95378A92E /* Pods-df-imagebrowser-ios_Tests.modulemap */,
+				44233545FEF183E69FFB6036213D344F /* Pods-df-imagebrowser-ios_Tests-acknowledgements.markdown */,
+				C883B0C2D883BE74A862C98F27DD3C9C /* Pods-df-imagebrowser-ios_Tests-acknowledgements.plist */,
+				461CCAB8B0298C6EB0B70BE2B3FE3C83 /* Pods-df-imagebrowser-ios_Tests-dummy.m */,
+				1C7CEAA8D360DFE00D444D85F70F4A2D /* Pods-df-imagebrowser-ios_Tests-frameworks.sh */,
+				EC54FE9E17DB865D61DB8A5365D90632 /* Pods-df-imagebrowser-ios_Tests-resources.sh */,
+				E74229A6974082A6B53475D10C371971 /* Pods-df-imagebrowser-ios_Tests-umbrella.h */,
+				08CC1039A59B7CB22DC9807C51E6C508 /* Pods-df-imagebrowser-ios_Tests.debug.xcconfig */,
+				C4EDB31FB66C747D458E4D2A68293F17 /* Pods-df-imagebrowser-ios_Tests.release.xcconfig */,
+			);
+			name = "Pods-df-imagebrowser-ios_Tests";
+			path = "Target Support Files/Pods-df-imagebrowser-ios_Tests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0474B5FBA82FF3B7F6392CFEF8B92E8A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3998736F6CCD4714A76FDFF93F360EB2 /* Pods-df-imagebrowser-ios_Tests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		720AAD4253A1C9C49C5589A7489681E6 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CC5B5D645350706501AC3C614BBFE08A /* Pods-df-imagebrowser-ios_Example-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8C8D5EA7A728D6B92874AC5F9F1E186 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D26A4895A7411CE9D0DC14D53E5B7EB /* df-imagebrowser-ios-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		079EE94DDBE4E86051B1494DBCD34060 /* df-imagebrowser-ios */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D3095B8A224DE27E53F072B3316B33A9 /* Build configuration list for PBXNativeTarget "df-imagebrowser-ios" */;
+			buildPhases = (
+				FA0789269153B07567618BAFEF35328A /* Sources */,
+				9D39BE109C7C93CFCC680531137527CE /* Frameworks */,
+				F8C8D5EA7A728D6B92874AC5F9F1E186 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "df-imagebrowser-ios";
+			productName = "df-imagebrowser-ios";
+			productReference = 21E26F30A70A51252AB1948337A17C3D /* df_imagebrowser_ios.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		2911E3BEBEB4FA6227B9C6A36630C5A4 /* Pods-df-imagebrowser-ios_Example */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5A01D4D01BA85DEEDED2CD89DD3D91B6 /* Build configuration list for PBXNativeTarget "Pods-df-imagebrowser-ios_Example" */;
+			buildPhases = (
+				26BA0E31FB570320DBC58972B9A16295 /* Sources */,
+				2ECDE83249B9C9633D01E0013263B7D8 /* Frameworks */,
+				720AAD4253A1C9C49C5589A7489681E6 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AAF3FA05D1D92627C54A8BF4BF44124E /* PBXTargetDependency */,
+			);
+			name = "Pods-df-imagebrowser-ios_Example";
+			productName = "Pods-df-imagebrowser-ios_Example";
+			productReference = DCD1B8C0F88081910333DB3D114627AE /* Pods_df_imagebrowser_ios_Example.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4F4DD20DDDC722A121455363139D0F3D /* Pods-df-imagebrowser-ios_Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE6919C453C2867C32D7F2FF612379BD /* Build configuration list for PBXNativeTarget "Pods-df-imagebrowser-ios_Tests" */;
+			buildPhases = (
+				D593AB81DFE5130AE639DF19C551192F /* Sources */,
+				2B444E5DD3A3A3464A07C106DA0C603A /* Frameworks */,
+				0474B5FBA82FF3B7F6392CFEF8B92E8A /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0415C30976CB2F035141767B9DE967D9 /* PBXTargetDependency */,
+			);
+			name = "Pods-df-imagebrowser-ios_Tests";
+			productName = "Pods-df-imagebrowser-ios_Tests";
+			productReference = 4435710B9A3AA27E1370EF540DAF4C47 /* Pods_df_imagebrowser_ios_Tests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 1010;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = B5AE1C83A3B3A83D0615F802A41125E4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				079EE94DDBE4E86051B1494DBCD34060 /* df-imagebrowser-ios */,
+				2911E3BEBEB4FA6227B9C6A36630C5A4 /* Pods-df-imagebrowser-ios_Example */,
+				4F4DD20DDDC722A121455363139D0F3D /* Pods-df-imagebrowser-ios_Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		26BA0E31FB570320DBC58972B9A16295 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D42044E9062CA8E1726576C8300479F1 /* Pods-df-imagebrowser-ios_Example-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D593AB81DFE5130AE639DF19C551192F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E4AE35819D6B95E90B7F0E5CFCFDDFF9 /* Pods-df-imagebrowser-ios_Tests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA0789269153B07567618BAFEF35328A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1838142221F6BF8D00723B67 /* ImageBrowserProgressView.swift in Sources */,
+				1838142921F6D91000723B67 /* Extension+.swift in Sources */,
+				B675EDB20DAD583341058CF30BE448AA /* df-imagebrowser-ios-dummy.m in Sources */,
+				1838141C21F6BF8D00723B67 /* ImageBrowserAsset.swift in Sources */,
+				1838142321F6BF8D00723B67 /* ImageBrowserCollectionView.swift in Sources */,
+				1838141E21F6BF8D00723B67 /* ImageBrowserBottomArrowView.swift in Sources */,
+				1838142121F6BF8D00723B67 /* ImageBrowserDownload.swift in Sources */,
+				1838141F21F6BF8D00723B67 /* ImageBrowserSquareView.swift in Sources */,
+				1838142021F6BF8D00723B67 /* ImageBrowserViewController.swift in Sources */,
+				1838141D21F6BF8D00723B67 /* ImageBrowserZoomCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0415C30976CB2F035141767B9DE967D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-df-imagebrowser-ios_Example";
+			target = 2911E3BEBEB4FA6227B9C6A36630C5A4 /* Pods-df-imagebrowser-ios_Example */;
+			targetProxy = ABE4B22B91B56DE5D13A76158D05300D /* PBXContainerItemProxy */;
+		};
+		AAF3FA05D1D92627C54A8BF4BF44124E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "df-imagebrowser-ios";
+			target = 079EE94DDBE4E86051B1494DBCD34060 /* df-imagebrowser-ios */;
+			targetProxy = 5811F1D1B2C9011FF910425F3A652A26 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		0F0EA6FCF3528B903F1A2F73EB23F472 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37F3FF4B190021B7D33A9128FBD6D64D /* df-imagebrowser-ios.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/df-imagebrowser-ios/df-imagebrowser-ios-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/df-imagebrowser-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/df-imagebrowser-ios/df-imagebrowser-ios.modulemap";
+				PRODUCT_MODULE_NAME = df_imagebrowser_ios;
+				PRODUCT_NAME = df_imagebrowser_ios;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		2666163CDBE89EF3260D2D0F64BDC60D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08CC1039A59B7CB22DC9807C51E6C508 /* Pods-df-imagebrowser-ios_Tests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-df-imagebrowser-ios_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-df-imagebrowser-ios_Tests/Pods-df-imagebrowser-ios_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		2B278312D236E82BF822DA3F3C7FCB7D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37F3FF4B190021B7D33A9128FBD6D64D /* df-imagebrowser-ios.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/df-imagebrowser-ios/df-imagebrowser-ios-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/df-imagebrowser-ios/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/df-imagebrowser-ios/df-imagebrowser-ios.modulemap";
+				PRODUCT_MODULE_NAME = df_imagebrowser_ios;
+				PRODUCT_NAME = df_imagebrowser_ios;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4E08F28DB01ACC6D5E736FC2BD773CED /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4EDB31FB66C747D458E4D2A68293F17 /* Pods-df-imagebrowser-ios_Tests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-df-imagebrowser-ios_Tests/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-df-imagebrowser-ios_Tests/Pods-df-imagebrowser-ios_Tests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		844B644B6730BF10D1BF9DEE967B87EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9DE4B76CACB14FD3F98FE1A9FAB237EE /* Pods-df-imagebrowser-ios_Example.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-df-imagebrowser-ios_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-df-imagebrowser-ios_Example/Pods-df-imagebrowser-ios_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		B42B54097A876E8A982CBF5DAA91B1AB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		B709FE02B2C6E410D11766FB42C65E19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 160F546213236A993BDECCA7598817E2 /* Pods-df-imagebrowser-ios_Example.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-df-imagebrowser-ios_Example/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-df-imagebrowser-ios_Example/Pods-df-imagebrowser-ios_Example.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */,
+				B42B54097A876E8A982CBF5DAA91B1AB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5A01D4D01BA85DEEDED2CD89DD3D91B6 /* Build configuration list for PBXNativeTarget "Pods-df-imagebrowser-ios_Example" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B709FE02B2C6E410D11766FB42C65E19 /* Debug */,
+				844B644B6730BF10D1BF9DEE967B87EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CE6919C453C2867C32D7F2FF612379BD /* Build configuration list for PBXNativeTarget "Pods-df-imagebrowser-ios_Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2666163CDBE89EF3260D2D0F64BDC60D /* Debug */,
+				4E08F28DB01ACC6D5E736FC2BD773CED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D3095B8A224DE27E53F072B3316B33A9 /* Build configuration list for PBXNativeTarget "df-imagebrowser-ios" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2B278312D236E82BF822DA3F3C7FCB7D /* Debug */,
+				0F0EA6FCF3528B903F1A2F73EB23F472 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

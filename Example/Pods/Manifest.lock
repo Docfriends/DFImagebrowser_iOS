@@ -1,0 +1,16 @@
+PODS:
+  - df-imagebrowser-ios (0.1.0)
+
+DEPENDENCIES:
+  - df-imagebrowser-ios (from `../`)
+
+EXTERNAL SOURCES:
+  df-imagebrowser-ios:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  df-imagebrowser-ios: 0944477fad009dca577fd1aeb61f413e37a663e7
+
+PODFILE CHECKSUM: c894cfaea9a30f94b1b5cf63dd91b44f73ba1398
+
+COCOAPODS: 1.5.3

@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'df-imagebrowser-ios_Example' do
+  pod 'df-imagebrowser-ios', :path => '../'
+
+  target 'df-imagebrowser-ios_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
