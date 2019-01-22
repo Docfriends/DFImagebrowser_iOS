@@ -126,6 +126,7 @@ open class ImageBrowserViewController: UIViewController {
         willSet {
             if newValue {
                 self.navigationItem.rightBarButtonItem = nil
+                self.titleButton.sizeToFit()
             } else {
                 let squareButtonItem = UIBarButtonItem(image: ImageBrowserSquareView.imageView(self.tintColor), style: .plain, target: self, action: #selector(self.moreTap(_:)))
                 self.navigationItem.rightBarButtonItem = squareButtonItem
@@ -201,6 +202,8 @@ open class ImageBrowserViewController: UIViewController {
             if !self.isMoreButtonHidden {
                 let squareButtonItem = UIBarButtonItem(image: ImageBrowserSquareView.imageView(self.tintColor), style: .plain, target: self, action: #selector(self.moreTap(_:)))
                 self.navigationItem.rightBarButtonItem = squareButtonItem
+            } else {
+                self.titleButton.sizeToFit()
             }
         }
         

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'df-imagebrowser-ios'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = '닥프렌즈의 이미지 브라우져 라이브러리'
 
 # This description is used to generate tags and improve search results.
