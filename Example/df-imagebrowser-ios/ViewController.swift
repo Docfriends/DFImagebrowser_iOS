@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func button1Tap(_ sender: UIButton) {
-        let assets = [ImageBrowserAsset(url: URL(string: "http://ww2.sjkoreancatholic.org/files/testing_image.jpg"))]
+        let assets = [ImageBrowserAsset(url: URL(string: "http://ww2.sjkoreancatholic.org/files/testing_image.jpg"), thumbnailImage: UIImage(named: "image.jpeg"))]
         let viewController = ImageBrowserViewController.instance(assets)
         viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     
     @objc private func button2Tap(_ sender: UIButton) {
         let assets = [
-            ImageBrowserAsset(url: URL(string: "http://ww2.sjkoreancatholic.org/files/testing_image.jpg")),
+            ImageBrowserAsset(url: URL(string: "http://ww2.sjkoreancatholic.org/files/testing_image.jpg"), thumbnailImage: UIImage(named: "image.jpeg")),
             ImageBrowserAsset(url: URL(string: "http://cfs7.tistory.com/upload_control/download.blog?fhandle=YmxvZzgyMzM1QGZzNy50aXN0b3J5LmNvbTovYXR0YWNoLzAvMDYwMDAwMDAwMDAwLmpwZw%3D%3D")),
             ImageBrowserAsset(url: URL(string: "https://cdn.pixabay.com/photo/2015/03/01/11/17/arrangement-654573_960_720.jpg")),
             ImageBrowserAsset(url: URL(string: "https://t1.daumcdn.net/cfile/tistory/2019F9354D9D2A000D")),
@@ -72,7 +72,7 @@ class ViewController: UIViewController {
             ImageBrowserAsset(url: URL(string: "https://byline.network/wp-content/uploads/2018/05/cat.png")),
             ImageBrowserAsset(url: URL(string: "https://t1.daumcdn.net/cfile/tistory/24283C3858F778CA2E")),
             ImageBrowserAsset(url: URL(string: "https://pbs.twimg.com/media/DW-E70PV4AAl86E.jpg")),
-            ImageBrowserAsset(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhdqiz_pFt79gczCCzODGYGS-iqqDSi1JvYToBXpUQ5SBQiZ5pEg")),
+            ImageBrowserAsset(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhdqiz_pFt79gczCCzODGYGS-iqqDSi1JvYToBXpUQ5SBQiZ5pEg"), thumbnailImage: UIImage(named: "image.jpeg")),
             ImageBrowserAsset(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJu7L6VPKSLfcTtCOp1QdcJuxM0z5rU2-jykh2XgGjUHMEX5Au4Q")),
             ImageBrowserAsset(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO-ILfVDrkaJicjFftxV3l9MREpN0wWO0Mdme2nrzReeFfcdbzEg")),
             ImageBrowserAsset(url: URL(string: "http://ww2.sjkoreancatholic.org/files/testing_image.jpg")),

@@ -71,8 +71,12 @@ class ImageBrowserZoomCell: UICollectionViewCell {
                 self.errorLabel.text = (error as NSError?)?.domain
             } else if case let .download(progress) = newValue.type {
                 self.scrollView.isUserInteractionEnabled = false
-                self.progressView.isHidden = false
-                self.progressView.setProgress(progress)
+                if let thumbnailImage = self.imageAsset?.thumbnailImage {
+                    self.imageView.image = thumbnailImage
+                } else {
+                    self.progressView.isHidden = false
+                    self.progressView.setProgress(progress)
+                }
             }
         }
     }

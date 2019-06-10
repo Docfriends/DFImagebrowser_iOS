@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18E39A1C22AE296C004E9269 /* image.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 18E39A1B22AE296B004E9269 /* image.jpeg */; };
 		2535E13EE30A2B5712B18CC8 /* Pods_df_imagebrowser_ios_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9CE8E61B63897C1D058DA02 /* Pods_df_imagebrowser_ios_Tests.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18E39A1B22AE296B004E9269 /* image.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = image.jpeg; sourceTree = "<group>"; };
 		31822034AC23838417E79787 /* Pods-df-imagebrowser-ios_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-df-imagebrowser-ios_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-df-imagebrowser-ios_Example/Pods-df-imagebrowser-ios_Example.release.xcconfig"; sourceTree = "<group>"; };
 		4F4D2833D13A192D18FD6CEE /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* df-imagebrowser-ios_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "df-imagebrowser-ios_Example.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,6 +98,7 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
+				18E39A1B22AE296B004E9269 /* image.jpeg */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
 				607FACD31AFB9204008FA782 /* Supporting Files */,
@@ -226,6 +229,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -246,6 +250,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				18E39A1C22AE296C004E9269 /* image.jpeg in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
 			);
