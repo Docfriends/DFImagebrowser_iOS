@@ -53,26 +53,30 @@ class ImageBrowserZoomCell: UICollectionViewCell {
     static var zoomProgressBackgroundColor: UIColor?
     
     var imageAsset: ImageBrowserAsset? {
-        willSet {
+        didSet {
             self.imageView.image = nil
             self.progressView.isHidden = true
             self.errorLabel.isHidden = true
             
-            guard let newValue = newValue else { return }
-            if newValue.type == .success {
+            guard let imageAsset = self.imageAsset else { return }
+            if imageAsset.type == .success {
                 if !self.isMore {
                     self.scrollView.isUserInteractionEnabled = true
                 }
-                self.imageView.image = newValue.image
+                self.imageView.image = imageAsset.image
+                if imageAsset.thumbnailImage == nil  {
+                    self.scrollView.setZoomScale(1, animated: false)
+                }
                 self.scrollView.setZoomScale(1, animated: false)
-            } else if case let .error(error) = newValue.type {
+            } else if case let .error(error) = imageAsset.type {
                 self.scrollView.isUserInteractionEnabled = false
                 self.errorLabel.isHidden = false
                 self.errorLabel.text = (error as NSError?)?.domain
-            } else if case let .download(progress) = newValue.type {
+            } else if case let .download(progress) = imageAsset.type {
                 self.scrollView.isUserInteractionEnabled = false
-                if let thumbnailImage = self.imageAsset?.thumbnailImage {
+                if let thumbnailImage = imageAsset.thumbnailImage {
                     self.imageView.image = thumbnailImage
+                    self.scrollView.setZoomScale(1, animated: false)
                 } else {
                     self.progressView.isHidden = false
                     self.progressView.setProgress(progress)
