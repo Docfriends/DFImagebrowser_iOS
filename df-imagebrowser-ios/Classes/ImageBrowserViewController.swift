@@ -5,21 +5,25 @@
 import UIKit
 
 public protocol ImageBrowserDelegate: class {
-    func imageBrowserDismiss(_ viewController: UIViewController)
-    func imageBrowserShareError(_ viewController: UIViewController, asset: ImageBrowserAsset)
-    func imageBrowserError(_ viewController: UIViewController, asset: ImageBrowserAsset)
+    func imageBrowserDismiss(_ viewController: ImageBrowserViewController)
+    func imageBrowserShareError(_ viewController: ImageBrowserViewController, error: Error?, asset: ImageBrowserAsset)
+    func imageBrowserError(_ viewController: ImageBrowserViewController, error: Error?, asset: ImageBrowserAsset)
+    func imageBrowserItemWillScroll(_ viewController: ImageBrowserViewController)
+    func imageBrowserItemDidScroll(_ viewController: ImageBrowserViewController)
 }
 
 public extension ImageBrowserDelegate {
-    func imageBrowserDismiss(_ viewController: UIViewController) {
+    func imageBrowserDismiss(_ viewController: ImageBrowserViewController) {
         if let viewController = viewController.navigationController?.viewControllers.first as? ImageBrowserViewController {
             viewController.dismiss(animated: true, completion: nil)
         } else {
             viewController.navigationController?.popViewController(animated: true)
         }
     }
-    func imageBrowserShare(_ error: Error?, asset: ImageBrowserAsset) { }
-    func imageBrowser(_ error: Error?, asset: ImageBrowserAsset) { }
+    func imageBrowserShareError(_ viewController: ImageBrowserViewController, error: Error?, asset: ImageBrowserAsset) { }
+    func imageBrowserError(_ viewController: ImageBrowserViewController, error: Error?, asset: ImageBrowserAsset) { }
+    func imageBrowserItemWillScroll(_ viewController: ImageBrowserViewController) { }
+    func imageBrowserItemDidScroll(_ viewController: ImageBrowserViewController) { }
 }
 
 open class ImageBrowserViewController: UIViewController {
@@ -142,28 +146,52 @@ open class ImageBrowserViewController: UIViewController {
     
     public var moreBackgroundColor: UIColor = .black
     
+    public var visibleIndex: Int? {
+        if self.isMore { return nil }
+        return self.imageBrowserCollectionView.currentIndex
+    }
+    
+    public var collectionView: UICollectionView {
+        return self.imageBrowserCollectionView
+    }
+    
+    public var visibleCell: UICollectionViewCell? {
+        guard let visibleIndex = self.visibleIndex else { return nil }
+        return self.imageBrowserCollectionView.cellForItem(at: IndexPath(item: visibleIndex, section: 0))
+    }
+    
+    public var visibleScrollView: UIScrollView? {
+        guard let visibleCell = self.visibleCell as? ImageBrowserZoomCell else { return nil }
+        return visibleCell.scrollView
+    }
+    
+    public var visibleImageView: UIImageView? {
+        guard let visibleCell = self.visibleCell as? ImageBrowserZoomCell else { return nil }
+        return visibleCell.imageView
+    }
+    
+    public var visibleAsset: ImageBrowserAsset? {
+        guard let visibleIndex = self.visibleIndex else { return nil }
+        return self.imageAssets[visibleIndex]
+    }
+    
     private var imageAssets = [ImageBrowserAsset]()
     
-    private lazy var collectionView: ImageBrowserCollectionView = {
+    private lazy var imageBrowserCollectionView: ImageBrowserCollectionView = {
         let topConstant: CGFloat = (self.navigationController?.navigationBar.frame.height ?? 0) + UIApplication.shared.statusBarFrame.height
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let frame = CGRect(x: 0, y: topConstant, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - topConstant)
         let collectionView = ImageBrowserCollectionView(frame: frame, collectionViewLayout: layout)
-        self.view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.edgesConstraint(subView: collectionView)
         return collectionView
     }()
     
     private var isInteractivePopGestureRecognizerEnabled: Bool?
     
-    private lazy var titleButton: UIButton = {
+    private let titleButton: UIButton = {
         let button = UIButton(type: .system)
-        button.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.navigationController?.navigationBar.frame.height ?? 44)
         button.semanticContentAttribute = .forceRightToLeft
-        button.setImage(ImageBrowserBottomArrowView.imageView(self.tintColor), for: .normal)
-        button.tintColor = self.tintColor
         button.imageEdgeInsets.right -= 10
         button.contentEdgeInsets.right += 10
         return button
@@ -185,6 +213,14 @@ open class ImageBrowserViewController: UIViewController {
     
     override open func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.addSubview(self.imageBrowserCollectionView)
+        self.view.edgesConstraint(subView: self.imageBrowserCollectionView)
+        
+        self.titleButton.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.navigationController?.navigationBar.frame.height ?? 44)
+        self.titleButton.setImage(ImageBrowserBottomArrowView.imageView(self.tintColor), for: .normal)
+        self.titleButton.tintColor = self.tintColor
+        
         
         self.view.backgroundColor = self.zoomBackgroundColor
         
@@ -221,24 +257,26 @@ open class ImageBrowserViewController: UIViewController {
         ImageBrowserZoomCell.moreProgressTintColor = self.moreProgressTintColor
         ImageBrowserZoomCell.moreProgressBackgroundColor = self.moreProgressBackgroundColor
         
-        self.collectionView.register(ImageBrowserZoomCell.self, forCellWithReuseIdentifier: ImageBrowserZoomCell.identifier)
+        self.imageBrowserCollectionView.register(ImageBrowserZoomCell.self, forCellWithReuseIdentifier: ImageBrowserZoomCell.identifier)
         if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .never
+            self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .never
         }
-        self.collectionView.backgroundColor = .clear
-        self.collectionView.contentInset = .zero
-        self.collectionView.isPagingEnabled = true
-        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
-        self.collectionView.reloadData()
-        self.collectionView.layoutIfNeeded()
+        self.imageBrowserCollectionView.backgroundColor = .clear
+        self.imageBrowserCollectionView.contentInset = .zero
+        self.imageBrowserCollectionView.isPagingEnabled = true
+        self.imageBrowserCollectionView.delegate = self
+        self.imageBrowserCollectionView.dataSource = self
+        self.imageBrowserCollectionView.reloadData()
+        self.imageBrowserCollectionView.layoutIfNeeded()
         
         self.navigationItem.titleView = self.titleButton
         self.titleButton.addTarget(self, action: #selector(self.shareTap(_:)), for: .touchUpInside)
-        self.titleButton.setTitle("\(self.collectionView.currentIndex+1) / \(self.imageAssets.count)", for: .normal)
+        self.titleButton.setTitle("\(self.imageBrowserCollectionView.currentIndex+1) / \(self.imageAssets.count)", for: .normal)
         self.titleButton.sizeToFit()
         
-        self.collectionView.scrollToItem(at: IndexPath(row: self.index, section: 0), at: .centeredHorizontally, animated: false)
+        self.imageBrowserCollectionView.scrollToItem(at: IndexPath(row: self.index, section: 0), at: .centeredHorizontally, animated: false)
+        self.delegate?.imageBrowserItemWillScroll(self)
+        self.delegate?.imageBrowserItemDidScroll(self)
     }
     
     override open func viewWillAppear(_ animated: Bool) {
@@ -260,10 +298,10 @@ open class ImageBrowserViewController: UIViewController {
     }
     
     @objc func shareTap(_ sender: UIButton) {
-        let index = self.collectionView.currentIndex
+        let index = self.imageBrowserCollectionView.currentIndex
         if index >= self.imageAssets.count { return }
         guard let image = self.imageAssets[index].image else {
-            self.delegate?.imageBrowserShareError(self, asset: self.imageAssets[index])
+            self.delegate?.imageBrowserShareError(self, error: NSError(domain: "Share No Image", code: 404, userInfo: nil) as Error, asset: self.imageAssets[index])
             return
         }
         let activityViewController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
@@ -274,7 +312,7 @@ open class ImageBrowserViewController: UIViewController {
     @objc func moreTap(_ sender: UIBarButtonItem) {
         self.isMore = true
         if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .always
+            self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .always
         }
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = self.isInteractivePopGestureRecognizerEnabled ?? true
         self.titleButton.setTitle("", for: .normal)
@@ -283,9 +321,9 @@ open class ImageBrowserViewController: UIViewController {
         self.navigationItem.rightBarButtonItem = nil
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        self.collectionView.collectionViewLayout = layout
-        self.collectionView.isPagingEnabled = false
-        self.collectionView.reloadData()
+        self.imageBrowserCollectionView.collectionViewLayout = layout
+        self.imageBrowserCollectionView.isPagingEnabled = false
+        self.imageBrowserCollectionView.reloadData()
         self.view.backgroundColor = self.moreBackgroundColor
     }
     
@@ -307,16 +345,25 @@ extension ImageBrowserViewController: UICollectionViewDelegate {
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard !self.isMore else { return }
         if let collectionView = scrollView as? ImageBrowserCollectionView {
+            let originIndex = collectionView.currentIndex
             collectionView.setCurrentIndexListCount(self.imageAssets.count)
             self.titleButton.setTitle("\(collectionView.currentIndex+1) / \(self.imageAssets.count)", for: .normal)
             self.titleButton.sizeToFit()
+            if originIndex != collectionView.currentIndex {
+                self.delegate?.imageBrowserItemWillScroll(self)
+            }
+            if CGFloat(collectionView.currentIndex) == collectionView.currentIndexValue {
+                DispatchQueue.main.async {
+                    self.delegate?.imageBrowserItemDidScroll(self)
+                }
+            }
         }
     }
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.isMore else { return }
         self.isMore = false
         if #available(iOS 11.0, *) {
-            self.collectionView.contentInsetAdjustmentBehavior = .never
+            self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .never
         }
         self.isInteractivePopGestureRecognizerEnabled = self.navigationController?.interactivePopGestureRecognizer?.isEnabled
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
@@ -324,11 +371,11 @@ extension ImageBrowserViewController: UICollectionViewDelegate {
         self.navigationItem.rightBarButtonItem = squareButtonItem
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-        self.collectionView.collectionViewLayout = layout
-        self.collectionView.isPagingEnabled = true
-        self.collectionView.reloadData()
-        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
-        self.collectionView.setCurrentIndexListCount(self.imageAssets.count)
+        self.imageBrowserCollectionView.collectionViewLayout = layout
+        self.imageBrowserCollectionView.isPagingEnabled = true
+        self.imageBrowserCollectionView.reloadData()
+        self.imageBrowserCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        self.imageBrowserCollectionView.setCurrentIndexListCount(self.imageAssets.count)
         self.titleButton.setTitle("\(indexPath.row+1) / \(self.imageAssets.count)", for: .normal)
         self.titleButton.sizeToFit()
         self.view.backgroundColor = self.zoomBackgroundColor
@@ -354,7 +401,7 @@ extension ImageBrowserViewController: UICollectionViewDataSource {
             cell.imageAsset = self.imageAssets[index]
             ImageBrowserDownload.load(item.url, progress: { [weak self] (progress) in
                 self?.imageAssets[index].type = .download(progress: progress)
-                if let cell = self?.collectionView.cellForItem(at: indexPath) as? ImageBrowserZoomCell {
+                if let cell = self?.imageBrowserCollectionView.cellForItem(at: indexPath) as? ImageBrowserZoomCell {
                     cell.imageAsset = self?.imageAssets[index]
                 }
             }) { [weak self] (error, image) in
@@ -364,7 +411,7 @@ extension ImageBrowserViewController: UICollectionViewDataSource {
                 } else {
                     self?.imageAssets[index].type = .error(error: error)
                 }
-                if let cell = self?.collectionView.cellForItem(at: indexPath) as? ImageBrowserZoomCell {
+                if let cell = self?.imageBrowserCollectionView.cellForItem(at: indexPath) as? ImageBrowserZoomCell {
                     cell.imageAsset = self?.imageAssets[index]
                 }
             }
@@ -381,7 +428,7 @@ extension ImageBrowserViewController: UICollectionViewDataSource {
         if item.type == .success {
             cell.imageAsset = item
         } else if item.type == .error(error: nil) {
-            self.delegate?.imageBrowserError(self, asset: item)
+            self.delegate?.imageBrowserError(self, error: NSError(domain: "No Image", code: 404, userInfo: nil) as Error, asset: item)
             cell.imageAsset = item
         } else if case let .download(progress) = item.type {
             self.imageAssets[index].type = .download(progress: progress)

@@ -7,40 +7,28 @@ import UIKit
 class ImageBrowserZoomCell: UICollectionViewCell {
     static let identifier = "ImageBrowserZoomCell"
     
-    private lazy var scrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        self.contentView.addSubview(scrollView)
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.edgesConstraint(subView: scrollView)
         return scrollView
     }()
     
-    private lazy var imageView: UIImageView = {
+    let imageView: UIImageView = {
         let imageView = UIImageView()
-        self.scrollView.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        self.scrollView.edgesConstraint(subView: imageView)
-        self.scrollView.sizeConstraint(subView: imageView)
         return imageView
     }()
     
-    private lazy var progressView: ImageBrowserProgressView = {
+    private let progressView: ImageBrowserProgressView = {
         let view = ImageBrowserProgressView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
-        self.contentView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.centerXConstraint(subView: view)
-        self.contentView.centerYConstraint(subView: view)
         view.sizeConstraint(constant: 50)
         return view
     }()
     
-    private lazy var errorLabel: UILabel = {
+    private let errorLabel: UILabel = {
         let label = UILabel()
-        self.contentView.addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
-        self.contentView.leadingConstraint(subView: label)
-        self.contentView.trailingConstraint(subView: label)
-        self.contentView.centerYConstraint(subView: label)
         return label
     }()
     
@@ -122,6 +110,23 @@ class ImageBrowserZoomCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
+        self.contentView.addSubview(self.scrollView)
+        self.contentView.edgesConstraint(subView: self.scrollView)
+        
+        self.scrollView.addSubview(self.imageView)
+        self.scrollView.edgesConstraint(subView: self.imageView)
+        self.scrollView.sizeConstraint(subView: self.imageView)
+        
+        self.contentView.addSubview(self.progressView)
+        self.contentView.centerXConstraint(subView: self.progressView)
+        self.contentView.centerYConstraint(subView: self.progressView)
+        
+        self.contentView.addSubview(self.errorLabel)
+        self.contentView.leadingConstraint(subView: self.errorLabel)
+        self.contentView.trailingConstraint(subView: self.errorLabel)
+        self.contentView.centerYConstraint(subView: self.errorLabel)
+        
         
         self.backgroundColor = .clear
         

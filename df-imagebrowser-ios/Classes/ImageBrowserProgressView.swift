@@ -31,16 +31,25 @@ class ImageBrowserProgressView: UIView {
     
     private var progress: Float = 0
     
-    private lazy var label: UILabel = {
+    private let label: UILabel = {
         let label = UILabel()
-        self.addSubview(label)
         label.font = UIFont.systemFont(ofSize: 10)
-        label.textColor = self.textColor
         label.translatesAutoresizingMaskIntoConstraints = false
-        self.centerXConstraint(subView: label)
-        self.centerYConstraint(subView: label)
         return label
     }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        self.addSubview(self.label)
+        self.label.textColor = self.textColor
+        self.centerXConstraint(subView: self.label)
+        self.centerYConstraint(subView: self.label)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     func setProgress(_ progress: Float) {
         self.progress = progress

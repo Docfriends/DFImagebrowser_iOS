@@ -42,6 +42,7 @@ class ViewController: UIViewController {
     @objc private func button1Tap(_ sender: UIButton) {
         let assets = [ImageBrowserAsset(url: URL(string: "http://ww2.sjkoreancatholic.org/files/testing_image.jpg"))]
         let viewController = ImageBrowserViewController.instance(assets)
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -56,6 +57,7 @@ class ViewController: UIViewController {
             ImageBrowserAsset(url: URL(string: "https://byline.network/wp-content/uploads/2018/05/cat.png")),
         ]
         let viewController = ImageBrowserViewController.instance(assets)
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -87,6 +89,7 @@ class ViewController: UIViewController {
             ImageBrowserAsset(url: URL(string: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQO-ILfVDrkaJicjFftxV3l9MREpN0wWO0Mdme2nrzReeFfcdbzEg")),
             ]
         let viewController = ImageBrowserViewController.instance(assets, index: 9)
+        viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
     }
 
@@ -102,5 +105,29 @@ extension ImageBrowserViewController {
         viewController.moreProgressTintColor = UIColor.red
         viewController.isMoreButtonHidden = imageAssets.count < 2
         return viewController
+    }
+}
+
+// MARK: ImageBrowserDelegate
+extension ViewController: ImageBrowserDelegate {
+    func imageBrowserItemWillScroll(_ viewController: ImageBrowserViewController) {
+        guard let visibleIndex = viewController.visibleIndex else { return }
+        print("willScroll visibleIndex: \(visibleIndex)")
+        guard let visibleCell = viewController.visibleCell else { return }
+        print("willScroll visibleCell: \(visibleCell)")
+        guard let indexPath = viewController.collectionView.indexPath(for: visibleCell) else { return }
+        print("willScroll visibleIndexPath: \(indexPath)")
+        guard let visibleImageView = viewController.visibleImageView else { return }
+        print("willScroll visibleImageView: \(visibleImageView)")
+    }
+    func imageBrowserItemDidScroll(_ viewController: ImageBrowserViewController) {
+        guard let visibleIndex = viewController.visibleIndex else { return }
+        print("didScroll visibleIndex: \(visibleIndex)")
+        guard let visibleCell = viewController.visibleCell else { return }
+        print("didScroll visibleCell: \(visibleCell)")
+        guard let indexPath = viewController.collectionView.indexPath(for: visibleCell) else { return }
+        print("didScroll visibleIndexPath: \(indexPath)")
+        guard let visibleImageView = viewController.visibleImageView else { return }
+        print("didScroll visibleImageView: \(visibleImageView)")
     }
 }
