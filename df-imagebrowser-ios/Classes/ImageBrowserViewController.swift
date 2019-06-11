@@ -10,6 +10,7 @@ public protocol ImageBrowserDelegate: class {
     func imageBrowserError(_ viewController: ImageBrowserViewController, error: Error?, asset: ImageBrowserAsset)
     func imageBrowserItemWillScroll(_ viewController: ImageBrowserViewController)
     func imageBrowserItemDidScroll(_ viewController: ImageBrowserViewController)
+    func imageBrowserItemTitle(_ viewController: ImageBrowserViewController, title: String) -> String?
 }
 
 public extension ImageBrowserDelegate {
@@ -24,10 +25,17 @@ public extension ImageBrowserDelegate {
     func imageBrowserError(_ viewController: ImageBrowserViewController, error: Error?, asset: ImageBrowserAsset) { }
     func imageBrowserItemWillScroll(_ viewController: ImageBrowserViewController) { }
     func imageBrowserItemDidScroll(_ viewController: ImageBrowserViewController) { }
+    func imageBrowserItemTitle(_ viewController: ImageBrowserViewController, title: String) -> String? {
+        return title
+    }
 }
 
 open class ImageBrowserViewController: UIViewController {
     public weak var delegate: ImageBrowserDelegate?
+    
+    deinit {
+        print("deinit: \(self)")
+    }
     
     public var barTintColor = UIColor.white {
         willSet {
@@ -271,7 +279,9 @@ open class ImageBrowserViewController: UIViewController {
         
         self.navigationItem.titleView = self.titleButton
         self.titleButton.addTarget(self, action: #selector(self.shareTap(_:)), for: .touchUpInside)
-        self.titleButton.setTitle("\(self.imageBrowserCollectionView.currentIndex+1) / \(self.imageAssets.count)", for: .normal)
+        let originTitle = "\(self.imageBrowserCollectionView.currentIndex+1) / \(self.imageAssets.count)"
+        let title = self.delegate?.imageBrowserItemTitle(self, title: originTitle) ?? originTitle
+        self.titleButton.setTitle(title, for: .normal)
         self.titleButton.sizeToFit()
         
         self.imageBrowserCollectionView.scrollToItem(at: IndexPath(row: self.index, section: 0), at: .centeredHorizontally, animated: false)
@@ -347,7 +357,9 @@ extension ImageBrowserViewController: UICollectionViewDelegate {
         if let collectionView = scrollView as? ImageBrowserCollectionView {
             let originIndex = collectionView.currentIndex
             collectionView.setCurrentIndexListCount(self.imageAssets.count)
-            self.titleButton.setTitle("\(collectionView.currentIndex+1) / \(self.imageAssets.count)", for: .normal)
+            let originTitle = "\(collectionView.currentIndex+1) / \(self.imageAssets.count)"
+            let title = self.delegate?.imageBrowserItemTitle(self, title: originTitle) ?? originTitle
+            self.titleButton.setTitle(title, for: .normal)
             self.titleButton.sizeToFit()
             if originIndex != collectionView.currentIndex {
                 self.delegate?.imageBrowserItemWillScroll(self)
@@ -376,7 +388,9 @@ extension ImageBrowserViewController: UICollectionViewDelegate {
         self.imageBrowserCollectionView.reloadData()
         self.imageBrowserCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
         self.imageBrowserCollectionView.setCurrentIndexListCount(self.imageAssets.count)
-        self.titleButton.setTitle("\(indexPath.row+1) / \(self.imageAssets.count)", for: .normal)
+        let originTitle = "\(indexPath.row+1) / \(self.imageAssets.count)"
+        let title = self.delegate?.imageBrowserItemTitle(self, title: originTitle) ?? originTitle
+        self.titleButton.setTitle(title, for: .normal)
         self.titleButton.sizeToFit()
         self.view.backgroundColor = self.zoomBackgroundColor
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.22) {
