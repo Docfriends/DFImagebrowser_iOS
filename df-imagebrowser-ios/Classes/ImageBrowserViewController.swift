@@ -33,10 +33,6 @@ public extension ImageBrowserDelegate {
 open class ImageBrowserViewController: UIViewController {
     public weak var delegate: ImageBrowserDelegate?
     
-    deinit {
-        print("deinit: \(self)")
-    }
-    
     public var barTintColor = UIColor.white {
         willSet {
             self.navigationController?.navigationBar.barTintColor = newValue
@@ -205,7 +201,10 @@ open class ImageBrowserViewController: UIViewController {
         return button
     }()
     
-    private var isMore = false
+    public var isMore: Bool {
+        return self._isMore
+    }
+    private var _isMore = false
     private var index = 0
     
     public init(_ imageAssets: [ImageBrowserAsset], index: Int = 0) {
@@ -320,7 +319,7 @@ open class ImageBrowserViewController: UIViewController {
     }
     
     @objc func moreTap(_ sender: UIBarButtonItem) {
-        self.isMore = true
+        self._isMore = true
         if #available(iOS 11.0, *) {
             self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .always
         }
@@ -373,7 +372,7 @@ extension ImageBrowserViewController: UICollectionViewDelegate {
     }
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.isMore else { return }
-        self.isMore = false
+        self._isMore = false
         if #available(iOS 11.0, *) {
             self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .never
         }
