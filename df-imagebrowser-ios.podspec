@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'df-imagebrowser-ios'
-  s.version          = '0.1.6'
+  s.version          = '0.1.7'
   s.summary          = '닥프렌즈의 이미지 브라우져 라이브러리'
 
 # This description is used to generate tags and improve search results.
@@ -32,7 +32,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'df-imagebrowser-ios/Classes/**/*'
   
-  s.swift_version = '4.2'
+  s.swift_version = '5.0'
   
   # s.resource_bundles = {
   #   'df-imagebrowser-ios' => ['df-imagebrowser-ios/Assets/*.png']
