@@ -5,6 +5,8 @@
 import UIKit
 
 public protocol ImageBrowserDelegate: class {
+    func imageBrowserImageCache(_ viewController: ImageBrowserViewController, url: URL?) -> UIImage?
+    func imageBrowserImageDownloadCache(_ viewController: ImageBrowserViewController, url: URL?, image: UIImage)
     func imageBrowserDismiss(_ viewController: ImageBrowserViewController)
     func imageBrowserShareError(_ viewController: ImageBrowserViewController, error: Error?, asset: ImageBrowserAsset)
     func imageBrowserError(_ viewController: ImageBrowserViewController, error: Error?, asset: ImageBrowserAsset)
@@ -14,6 +16,8 @@ public protocol ImageBrowserDelegate: class {
 }
 
 public extension ImageBrowserDelegate {
+    func imageBrowserImageCache(_ viewController: ImageBrowserViewController, url: URL?) -> UIImage? { return nil }
+    func imageBrowserImageDownloadCache(_ viewController: ImageBrowserViewController, url: URL?, image: UIImage) { }
     func imageBrowserDismiss(_ viewController: ImageBrowserViewController) {
         if let viewController = viewController.navigationController?.viewControllers.first as? ImageBrowserViewController {
             viewController.dismiss(animated: true, completion: nil)
@@ -410,22 +414,32 @@ extension ImageBrowserViewController: UICollectionViewDataSource {
         let index = indexPath.row
         let item = self.imageAssets[index]
         if item.type == .wait {
-            self.imageAssets[index].type = .download(progress: 0)
-            cell.imageAsset = self.imageAssets[index]
-            ImageBrowserDownload.load(item.url, progress: { [weak self] (progress) in
-                self?.imageAssets[index].type = .download(progress: progress)
-                if let cell = self?.imageBrowserCollectionView.cellForItem(at: indexPath) as? ImageBrowserZoomCell {
-                    cell.imageAsset = self?.imageAssets[index]
-                }
-            }) { [weak self] (error, image) in
-                if error == nil, let image = image {
-                    self?.imageAssets[index].image = image
-                    self?.imageAssets[index].type = .success
-                } else {
-                    self?.imageAssets[index].type = .error(error: error)
-                }
-                if let cell = self?.imageBrowserCollectionView.cellForItem(at: indexPath) as? ImageBrowserZoomCell {
-                    cell.imageAsset = self?.imageAssets[index]
+            if let image = self.delegate?.imageBrowserImageCache(self, url: item.url) {
+                self.imageAssets[index].image = image
+                self.imageAssets[index].type = .success
+                cell.imageAsset = self.imageAssets[index]
+            } else {
+                self.imageAssets[index].type = .download(progress: 0)
+                cell.imageAsset = self.imageAssets[index]
+                let url = item.url
+                ImageBrowserDownload.load(url, progress: { [weak self] (progress) in
+                    self?.imageAssets[index].type = .download(progress: progress)
+                    if let cell = self?.imageBrowserCollectionView.cellForItem(at: indexPath) as? ImageBrowserZoomCell {
+                        cell.imageAsset = self?.imageAssets[index]
+                    }
+                }) { [weak self] (error, image) in
+                    if error == nil, let image = image {
+                        self?.imageAssets[index].image = image
+                        self?.imageAssets[index].type = .success
+                        if let self = self {
+                            self.delegate?.imageBrowserImageDownloadCache(self, url: url, image: image)
+                        }
+                    } else {
+                        self?.imageAssets[index].type = .error(error: error)
+                    }
+                    if let cell = self?.imageBrowserCollectionView.cellForItem(at: indexPath) as? ImageBrowserZoomCell {
+                        cell.imageAsset = self?.imageAssets[index]
+                    }
                 }
             }
         }

@@ -110,6 +110,19 @@ extension ImageBrowserViewController {
 
 // MARK: ImageBrowserDelegate
 extension ViewController: ImageBrowserDelegate {
+    func imageBrowserImageCache(_ viewController: ImageBrowserViewController, url: URL?) -> UIImage? {
+        guard let url = url else { return nil }
+        guard let data = UserDefaults.standard.data(forKey: url.absoluteString),
+            let image = UIImage(data: data) else { return nil }
+        return image
+    }
+
+    func imageBrowserImageDownloadCache(_ viewController: ImageBrowserViewController, url: URL?, image: UIImage) {
+        guard let url = url else { return }
+        UserDefaults.standard.set(image.pngData(), forKey: url.absoluteString)
+        UserDefaults.standard.synchronize()
+    }
+
     func imageBrowserItemWillScroll(_ viewController: ImageBrowserViewController) {
         guard let visibleIndex = viewController.visibleIndex else { return }
         print("willScroll visibleIndex: \(visibleIndex)")
@@ -120,6 +133,7 @@ extension ViewController: ImageBrowserDelegate {
         guard let visibleImageView = viewController.visibleImageView else { return }
         print("willScroll visibleImageView: \(visibleImageView)")
     }
+
     func imageBrowserItemDidScroll(_ viewController: ImageBrowserViewController) {
         guard let visibleIndex = viewController.visibleIndex else { return }
         print("didScroll visibleIndex: \(visibleIndex)")
