@@ -215,10 +215,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 87A5DD433W;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 87A5DD433W;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -479,6 +481,7 @@
 			baseConfigurationReference = 7514794FC8171338CE9FDB47 /* Pods-df-imagebrowser-ios_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 87A5DD433W;
 				INFOPLIST_FILE = "df-imagebrowser-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -494,6 +497,7 @@
 			baseConfigurationReference = 31822034AC23838417E79787 /* Pods-df-imagebrowser-ios_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 87A5DD433W;
 				INFOPLIST_FILE = "df-imagebrowser-ios/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
@@ -508,6 +512,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 97F4B6630EF2B933676A9A21 /* Pods-df-imagebrowser-ios_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 87A5DD433W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -530,6 +535,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA28124BFC0310853E114D23 /* Pods-df-imagebrowser-ios_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 87A5DD433W;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

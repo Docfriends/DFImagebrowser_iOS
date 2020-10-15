@@ -52,6 +52,10 @@ class ImageBrowserProgressView: UIView {
     }
     
     func setProgress(_ progress: Float) {
+        var progress = progress
+        if progress < 0 {
+            progress = 0
+        }
         self.progress = progress
         self.label.text = String(format: "%.1f", progress*100).appending("%")
         self.setNeedsDisplay()

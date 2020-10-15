@@ -40,7 +40,8 @@ class ViewController: UIViewController {
     }
     
     @objc private func button1Tap(_ sender: UIButton) {
-        let assets = [ImageBrowserAsset(url: URL(string: "http://ww2.sjkoreancatholic.org/files/testing_image.jpg"), thumbnailImage: UIImage(named: "image.jpeg"))]
+        let assets = [ImageBrowserAsset(url: URL(string: "https://img.doctalk.co.kr/resources/dfs/doctalk/2018/01/12/8afcfc1b278e53578ef7759fd1c28e08.png"))]
+//        let assets = [ImageBrowserAsset(url: URL(string: "http://ww2.sjkoreancatholic.org/files/testing_image.jpg"), thumbnailImage: UIImage(named: "image.jpeg"))]
         let viewController = ImageBrowserViewController.instance(assets)
         viewController.delegate = self
         self.navigationController?.pushViewController(viewController, animated: true)
