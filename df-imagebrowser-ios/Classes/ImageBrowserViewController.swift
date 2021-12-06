@@ -186,7 +186,12 @@ open class ImageBrowserViewController: UIViewController {
     private var imageAssets = [ImageBrowserAsset]()
     
     private lazy var imageBrowserCollectionView: ImageBrowserCollectionView = {
-        let topConstant: CGFloat = (self.navigationController?.navigationBar.frame.height ?? 0) + (view.window?.windowScene?.statusBarManager?.statusBarFrame.height)!
+        var topConstant: CGFloat = 0
+        if #available(iOS 13.0, *) {
+            topConstant = (self.navigationController?.navigationBar.frame.height ?? 0) + (view.window?.windowScene?.statusBarManager?.statusBarFrame.height)!
+        } else {
+            topConstant = (self.navigationController?.navigationBar.frame.height ?? 0) + UIApplication.shared.statusBarFrame.height
+        }
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let frame = CGRect(x: 0, y: topConstant, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - topConstant)
