@@ -4,7 +4,7 @@
 
 import UIKit
 
-public protocol ImageBrowserDelegate: class {
+public protocol ImageBrowserDelegate: AnyObject {
     func imageBrowserImageCache(_ viewController: ImageBrowserViewController, url: URL?) -> UIImage?
     func imageBrowserImageDownloadCache(_ viewController: ImageBrowserViewController, url: URL?, image: UIImage)
     func imageBrowserDismiss(_ viewController: ImageBrowserViewController)
@@ -186,7 +186,7 @@ open class ImageBrowserViewController: UIViewController {
     private var imageAssets = [ImageBrowserAsset]()
     
     private lazy var imageBrowserCollectionView: ImageBrowserCollectionView = {
-        let topConstant: CGFloat = (self.navigationController?.navigationBar.frame.height ?? 0) + UIApplication.shared.statusBarFrame.height
+        let topConstant: CGFloat = (self.navigationController?.navigationBar.frame.height ?? 0) + (view.window?.windowScene?.statusBarManager?.statusBarFrame.height)!
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let frame = CGRect(x: 0, y: topConstant, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - topConstant)
@@ -269,9 +269,7 @@ open class ImageBrowserViewController: UIViewController {
         ImageBrowserZoomCell.moreProgressBackgroundColor = self.moreProgressBackgroundColor
         
         self.imageBrowserCollectionView.register(ImageBrowserZoomCell.self, forCellWithReuseIdentifier: ImageBrowserZoomCell.identifier)
-        if #available(iOS 11.0, *) {
-            self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .never
-        }
+        self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .never
         self.imageBrowserCollectionView.backgroundColor = .clear
         self.imageBrowserCollectionView.contentInset = .zero
         self.imageBrowserCollectionView.isPagingEnabled = true
@@ -324,9 +322,7 @@ open class ImageBrowserViewController: UIViewController {
     
     @objc func moreTap(_ sender: UIBarButtonItem) {
         self._isMore = true
-        if #available(iOS 11.0, *) {
-            self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .always
-        }
+        self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .always
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = self.isInteractivePopGestureRecognizerEnabled ?? true
         self.titleButton.setTitle("", for: .normal)
         self.titleButton.setImage(nil, for: .normal)
@@ -377,9 +373,7 @@ extension ImageBrowserViewController: UICollectionViewDelegate {
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard self.isMore else { return }
         self._isMore = false
-        if #available(iOS 11.0, *) {
-            self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .never
-        }
+        self.imageBrowserCollectionView.contentInsetAdjustmentBehavior = .never
         self.isInteractivePopGestureRecognizerEnabled = self.navigationController?.interactivePopGestureRecognizer?.isEnabled
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         let squareButtonItem = UIBarButtonItem(image: ImageBrowserSquareView.imageView(self.tintColor), style: .plain, target: self, action: #selector(self.moreTap(_:)))
@@ -492,9 +486,7 @@ extension ImageBrowserViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if self.isMore {
             var bottomConstant: CGFloat = 0
-            if #available(iOS 11.0, *) {
-                bottomConstant = UIApplication.shared.keyWindow?.safeAreaInsets.bottom ?? 0
-            }
+            bottomConstant = (UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom)!
             return UIEdgeInsets(top: 0, left: 0, bottom: bottomConstant, right: 0)
         } else {
             return UIEdgeInsets.zero
