@@ -188,7 +188,8 @@ open class ImageBrowserViewController: UIViewController {
     private lazy var imageBrowserCollectionView: ImageBrowserCollectionView = {
         var topConstant: CGFloat = 0
         if #available(iOS 13.0, *) {
-            topConstant = (self.navigationController?.navigationBar.frame.height ?? 0) + (view.window?.windowScene?.statusBarManager?.statusBarFrame.height)!
+            topConstant = (self.navigationController?.navigationBar.frame.height ?? 0) + (view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0)
+            
         } else {
             topConstant = (self.navigationController?.navigationBar.frame.height ?? 0) + UIApplication.shared.statusBarFrame.height
         }
@@ -491,7 +492,7 @@ extension ImageBrowserViewController: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         if self.isMore {
             var bottomConstant: CGFloat = 0
-            bottomConstant = (UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom)!
+            bottomConstant = (UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.bottom ?? 0)
             return UIEdgeInsets(top: 0, left: 0, bottom: bottomConstant, right: 0)
         } else {
             return UIEdgeInsets.zero
